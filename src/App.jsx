@@ -25,7 +25,7 @@ function handleAudioReset() {
           <HomePage setFile={setFile} setAudioStream={setAudioStream} />
         )}
       </section>
-      <h1>hello</h1>
+      <h1 className='text-gree-100'>hello</h1>
       <footer> </footer>
     </div>
   )
