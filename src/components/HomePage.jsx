@@ -26,7 +26,13 @@ export default function HomePage(props) {
       console.log(err.message)
       return
     }
+
+    const media = new MediaRecorder(tempStream, {type: mineType})
+    mediaRecorder.current = media
+  
+    mediaRecorder.current.start()
     
+
   }
 
 
