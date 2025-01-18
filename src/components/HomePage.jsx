@@ -9,7 +9,7 @@ export default function HomePage(props) {
 
   const mediaRecorder = useRef(null)
 
-  const mineType = 'audio/webm'
+  const mimeType = 'audio/webm'
 
   async function startRecording() {
     let tempStream
@@ -28,7 +28,8 @@ export default function HomePage(props) {
     }
     setRecordingStatus('recording')
 
-    const media = new MediaRecorder(tempStream, {type: mineType})
+    //create new Media recorder instance using the stream
+    const media = new MediaRecorder(tempStream, {type: mimeType})
     mediaRecorder.current = media
   
     mediaRecorder.current.start()
@@ -43,24 +44,25 @@ export default function HomePage(props) {
 
 async function stopRecording() {
   setRecordingStatus('inactive')
-  console.log('Stop Recording')
+  console.log('Stop recording')
 
   mediaRecorder.current.stop()
   mediaRecorder.current.onstop = () => {
-    const audioBlob = new Blob(audioChunks, {type: mineType})
-    setAudioStream(audioBlob)
-    setAudioChunks([])
-    setDuration(0)
+      const audioBlob = new Blob(audioChunks, { type: mimeType })
+      setAudioStream(audioBlob)
+      setAudioChunks([])
+      setDuration(0)
   }
-} 
+}
 
 useEffect(() => {
-  if (recordingStatus === 'innactive') {return}
-  const interval = setInterval(() => {
-    setDuration(current => current + 1)
-  }, 1000)
-  return () => clearInterval(interval)
+  if (recordingStatus === 'inactive') { return }
 
+  const interval = setInterval(() => {
+      setDuration(curr => curr + 1)
+  }, 1000)
+
+  return () => clearInterval(interval)
 })
 
   return (
