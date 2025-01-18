@@ -11,7 +11,7 @@ export default function HomePage(props) {
 
   const mineType = 'audio/webm'
 
-  assync function startRecording() {
+  async function startRecording() {
     let tempStream
 
     console.log('Start Recording')
@@ -41,7 +41,7 @@ export default function HomePage(props) {
   setAudioChunks(localAudioChunks)
 }
 
-assync function stopRecording() {
+async function stopRecording() {
   setRecordingStatus('inactive')
   console.log('Stop Recording')
 
@@ -56,8 +56,12 @@ assync function stopRecording() {
 useEffect(() => {
   if (recordingStatus === 'innactive') {return}
 
-  
-}
+  const intervel = setInterval(() => {
+    setDuration(curr => curr + 1)
+  }, 1000)
+  return () => clearInterval(intervel)
+
+})
 
   return (
     <main className='flex-1 p-4 flex flex-col gap-3 text-center sm:gap-4
