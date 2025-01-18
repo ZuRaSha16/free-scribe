@@ -74,7 +74,9 @@ useEffect(() => {
       <button className='flex specialBtn px-4
       py-2 rounded-xl items-center text-base justify-between
       gap-4 mx-auto w-72 max-w-full my-4'>
-        <p className='text-blue-400'>Record</p>
+        <p className='text-blue-400'>{recordingStatus==='inactive'
+      ?'Record' : `Stop Recording`}</p>
+      <div></div>
         <i className="fa-solid fa-microphone"></i>
       </button>
       <p className='text-base'>Or <label className='text-blue-400 cursor-pointer
