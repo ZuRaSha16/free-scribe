@@ -56,11 +56,10 @@ async function stopRecording() {
 
 useEffect(() => {
   if (recordingStatus === 'innactive') {return}
-
-  const intervel = setInterval(() => {
+  const interval = setInterval(() => {
     setDuration(current => current + 1)
   }, 1000)
-  return () => clearInterval(intervel)
+  return () => clearInterval(interval)
 
 })
 
@@ -81,7 +80,7 @@ useEffect(() => {
       ?'Record' : `Stop Recording`}</p>
       <div className='flex items-center gap-2'>
         {duration && (
-          <p className='text-sm'>{duration}</p>
+          <p className='text-sm'>{duration}s</p>
         )}
         <i className={"fa-solid fa-microphone" + 
           (recordingStatus === 'recording' ? 'text-rose-300' :
