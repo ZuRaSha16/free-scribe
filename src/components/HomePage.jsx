@@ -17,7 +17,7 @@ export default function HomePage(props) {
     console.log('Start Recording')
 
     try {
-      const streamData = navigator.mediaDevices.getUserMedia({
+      const streamData = await navigator.mediaDevices.getUserMedia({
         audio: true,
         video: false
       })
